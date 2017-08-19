@@ -11,6 +11,7 @@ def create_todos_from_filename(filename):
             todo_type=todo.Todo(),
             due=todo.Deadline(),
             closed=todo.Closed(),
+            tags=todo.Tags(),
         ))
 
     return results
@@ -21,13 +22,13 @@ class Todo(graphene.ObjectType):
     todo_type = graphene.String()  # TODO Consider enums
     due = graphene.String()
     closed = graphene.String()
+    tags = graphene.List(graphene.String)
 
 
 class Query(graphene.ObjectType):
     todos = graphene.List(Todo)
 
     def resolve_todos(self, args, context, info):
-        # fetch all todos
         # TODO: Caching
         return create_todos_from_filename('.org/todo/todo.org')
 
