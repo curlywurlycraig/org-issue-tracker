@@ -1,0 +1,4 @@
+* TODO Make this project
+  DEADLINE: <2017-08-21 Mon>
+* DONE Another yin
+  CLOSED: [2017-08-19 Sat 19:47]
