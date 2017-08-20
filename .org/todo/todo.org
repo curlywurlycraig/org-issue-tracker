@@ -1,5 +1,8 @@
-* TODO Make this project
-  DEADLINE: <2017-08-21 Mon>
+* DONE Make this project
+  CLOSED: [2017-08-19 Sat 19:47]
 * DONE Another yin
   CLOSED: [2017-08-19 Sat 19:47]
-* TODO Test the parser :hello:yes:
+* TODO Better styles
+* TODO Provide scheme via an API endpoint
+* TODO Improve error logging
+  Shouldn't make it into the graphQL response.

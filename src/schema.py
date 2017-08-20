@@ -13,6 +13,7 @@ def create_todos_from_filename(filename):
             due=todo.Deadline(),
             closed=todo.Closed(),
             tags=todo.Tags(),
+            body=todo.Body()
         ))
 
     return results
@@ -27,6 +28,7 @@ class Todo(graphene.ObjectType):
     due = graphene.String()
     closed = graphene.String()
     tags = graphene.List(graphene.String)
+    body = graphene.String()
 
 
 class Viewer(graphene.ObjectType):

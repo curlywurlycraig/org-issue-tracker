@@ -122,13 +122,11 @@ def makelist(filename):
               deadline_date = datetime.date(int(dd_re.group(1)),
                                             int(dd_re.group(2)),
                                             int(dd_re.group(3)))
-              cl_re = re.search('CLOSED:\s*\[(\d+)\-(\d+)\-(\d+)', line)  # TODO: Get the time in there too
+           cl_re = re.search('CLOSED:\s*\[(\d+)\-(\d+)\-(\d+)', line)  # TODO: Get the time in there too
            if cl_re:
               closed_date = datetime.date(int(cl_re.group(1)),
                                           int(cl_re.group(2)),
-                                          int(cl_re.group(3)),
-                                          int(cl_re.group(4)),
-                                          int(cl_re.group(5)))
+                                          int(cl_re.group(3)))
 
    # write out last node
    thisNode = Orgnode(level, heading, bodytext, tag1, alltags)
