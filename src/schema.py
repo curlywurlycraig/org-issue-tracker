@@ -5,8 +5,9 @@ from parser import makelist as get_todos
 def create_todos_from_filename(filename):
     todos = get_todos(filename)
     results = []
-    for todo in todos:
+    for i, todo in enumerate(todos):
         results.append(Todo(
+            id=i,
             heading=todo.Heading(),
             todo_type=todo.Todo(),
             due=todo.Deadline(),
@@ -18,6 +19,9 @@ def create_todos_from_filename(filename):
 
 
 class Todo(graphene.ObjectType):
+    class Meta:
+        interfaces = (graphene.relay.Node, )
+
     heading = graphene.String()
     todo_type = graphene.String()  # TODO Consider enums
     due = graphene.String()
@@ -25,12 +29,22 @@ class Todo(graphene.ObjectType):
     tags = graphene.List(graphene.String)
 
 
-class Query(graphene.ObjectType):
+class Viewer(graphene.ObjectType):
     todos = graphene.List(Todo)
+
+    class Meta:
+        interfaces = (graphene.relay.Node, )
 
     def resolve_todos(self, args, context, info):
         # TODO: Caching
         return create_todos_from_filename('.org/todo/todo.org')
+
+
+class Query(graphene.ObjectType):
+    viewer = graphene.Field(Viewer)
+
+    def resolve_viewer(self, args, context, info):
+        return Viewer(todos=create_todos_from_filename('.org/todo/todo.org'))
 
 
 schema = graphene.Schema(query=Query)
