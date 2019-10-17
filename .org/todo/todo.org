@@ -6,3 +6,5 @@
 * TODO Provide scheme via an API endpoint
 * TODO Improve error logging
   Shouldn't make it into the graphQL response.
+* TODO Add ability to mark a todo as completed                         :task:
+* TODO Stuff                                               :thing:otherthing:
